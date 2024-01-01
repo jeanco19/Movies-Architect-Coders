@@ -1,0 +1,103 @@
+[versions]
+
+# DEFAULT
+coreKtxVersion = "1.12.0"
+appcompatVersion = "1.6.1"
+materialVersion = "1.11.0"
+constraintlayoutVersion = "2.1.4"
+
+# COROUTINES
+coroutinesVersion = "1.7.1"
+
+# RETROFIT
+retrofitVersion = "2.9.0"
+loggingInterceptorVersion = "4.9.3"
+
+# DAGGER HILT
+hiltVersion = "2.44.2"
+
+# ROOM DB
+roomVersion = "2.6.1"
+
+# COIL
+coilVersion = "2.5.0"
+
+# TEST
+junitVersion = "4.13.2"
+espressoCoreVersion = "3.5.1"
+
+# ANDROID TEST
+junit = "1.1.5"
+
+# PLUGINS
+androidApplicationVersion = "8.1.1"
+androidLibraryVersion = "8.1.2"
+kotlinVersion = "1.9.0"
+
+
+[libraries]
+
+# DEFAULT
+core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
+appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompatVersion" }
+material = { module = "com.google.android.material:material", version.ref = "materialVersion" }
+constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayoutVersion" }
+
+# COROUTINES
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutinesVersion" }
+kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "coroutinesVersion" }
+
+# RETROFIT
+retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptorVersion" }
+
+#DAGGER HILT
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
+hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
+
+# ROOM DB
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomVersion" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "roomVersion" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersion" }
+
+# COIL
+coil-kt = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
+
+# TEST
+junit = { module = "junit:junit", version.ref = "junitVersion" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
+
+# ANDROID TEST
+ext-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+
+
+[bundles]
+
+# ROOM DB
+room-database = [
+    "room-ktx",
+    "room-runtime"
+]
+
+# RETROFIT
+retrofit = [
+    "retrofit",
+    "converter-gson",
+    "logging-interceptor"
+]
+
+# COROUTINES
+coroutines = [
+    "kotlinx-coroutines-android",
+    "kotlinx-coroutines-play-services"
+]
+
+
+[plugins]
+
+android-application = { id = "com.android.application", version.ref = "androidApplicationVersion" }
+android-library = { id = "com.android.library", version.ref = "androidLibraryVersion" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
+hilt-android = { id = "com.google.dagger.hilt.android", version.ref = "hiltVersion" }
