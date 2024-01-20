@@ -1,6 +1,6 @@
 package com.jean.moviesarchitectcoders.data.datasource.movies.local
 
-import com.jean.moviesarchitectcoders.data.models.Movie
+import com.jean.moviesarchitectcoders.domain.models.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieLocalDatasource {

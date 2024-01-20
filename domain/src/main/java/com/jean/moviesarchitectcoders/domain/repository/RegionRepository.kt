@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.data.repository
+package com.jean.moviesarchitectcoders.domain.repository
 
 interface RegionRepository {
 

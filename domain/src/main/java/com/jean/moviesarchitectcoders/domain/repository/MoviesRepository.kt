@@ -1,9 +1,11 @@
-package com.jean.moviesarchitectcoders.data.repository
+package com.jean.moviesarchitectcoders.domain.repository
 
-import com.jean.moviesarchitectcoders.data.models.Movie
+import com.jean.moviesarchitectcoders.domain.models.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
+
+    val movies: Flow<List<Movie>>
 
     fun getMovies(region: String): Flow<List<Movie>>
 

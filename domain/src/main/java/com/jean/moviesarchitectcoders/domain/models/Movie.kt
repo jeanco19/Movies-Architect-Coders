@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.data.models
+package com.jean.moviesarchitectcoders.domain.models
 
 data class Movie(
     val id: Int,

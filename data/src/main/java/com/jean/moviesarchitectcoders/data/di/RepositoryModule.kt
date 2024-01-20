@@ -1,8 +1,8 @@
 package com.jean.moviesarchitectcoders.data.di
 
-import com.jean.moviesarchitectcoders.data.repository.MoviesRepository
+import com.jean.moviesarchitectcoders.domain.repository.MoviesRepository
 import com.jean.moviesarchitectcoders.data.repository.MoviesRepositoryImpl
-import com.jean.moviesarchitectcoders.data.repository.RegionRepository
+import com.jean.moviesarchitectcoders.domain.repository.RegionRepository
 import com.jean.moviesarchitectcoders.data.repository.RegionRepositoryImpl
 import dagger.Binds
 import dagger.Module

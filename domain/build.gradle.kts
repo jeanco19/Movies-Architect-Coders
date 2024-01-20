@@ -1,6 +1,3 @@
-import java.io.FileInputStream
-import java.util.Properties
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -9,19 +6,13 @@ plugins {
 }
 
 android {
-
-    namespace = "com.jean.moviesarchitectcoders.data"
+    namespace = "com.jean.moviesarchitectcoders.domain"
     compileSdk = 34
 
     defaultConfig {
         minSdk = 25
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        val properties = Properties().apply {
-            load(FileInputStream(File(rootProject.rootDir, "local.properties")))
-        }
-        buildConfigField("String", "TMDB_API_KEY", properties.getProperty("TMDB_API_KEY"))
     }
 
     buildTypes {
@@ -43,33 +34,16 @@ android {
         jvmTarget = "1.8"
     }
 
-    buildFeatures {
-        buildConfig = true
-    }
-
 }
 
 dependencies {
 
-    // ARCHITECTURE
-    implementation(project(":domain"))
-
     // COROUTINES
     implementation(libs.bundles.coroutines)
-
-    // RETROFIT
-    implementation(libs.bundles.retrofit)
 
     // DAGGER HILT
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
-
-    // ROOM DB
-    implementation(libs.bundles.room.database)
-    kapt(libs.room.compiler)
-
-    // PLAY SERVICES
-    implementation(libs.play.services.location)
 
     // TEST
     testImplementation(libs.junit)
