@@ -14,13 +14,16 @@ retrofitVersion = "2.9.0"
 loggingInterceptorVersion = "4.9.3"
 
 # DAGGER HILT
-hiltVersion = "2.44.2"
+hiltVersion = "2.48"
 
 # ROOM DB
 roomVersion = "2.6.1"
 
 # COIL
 coilVersion = "2.5.0"
+
+# PLAY SERVICES
+playServicesLocationVersion = "21.0.1"
 
 # TEST
 junitVersion = "4.13.2"
@@ -30,9 +33,9 @@ espressoCoreVersion = "3.5.1"
 junit = "1.1.5"
 
 # PLUGINS
-androidApplicationVersion = "8.1.1"
-androidLibraryVersion = "8.1.2"
-kotlinVersion = "1.9.0"
+androidApplicationVersion = "8.2.0"
+androidLibraryVersion = "8.2.0"
+kotlinVersion = "1.9.20"
 
 
 [libraries]
@@ -63,6 +66,10 @@ room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomVersi
 
 # COIL
 coil-kt = { module = "io.coil-kt:coil", version.ref = "coilVersion" }
+
+# PLAY SERVICES
+
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocationVersion" }
 
 # TEST
 junit = { module = "junit:junit", version.ref = "junitVersion" }

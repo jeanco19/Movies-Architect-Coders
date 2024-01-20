@@ -1,22 +1,27 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt.android)
 }
 
 android {
-    namespace = "com.jean.moviesarchitectcoders"
+
+    namespace = "com.jean.moviesarchitectcoders.data"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.jean.moviesarchitectcoders"
         minSdk = 25
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val properties = Properties().apply {
+            load(FileInputStream(File(rootProject.rootDir, "local.properties")))
+        }
+        buildConfigField("String", "TMDB_API_KEY", properties.getProperty("TMDB_API_KEY"))
     }
 
     buildTypes {
@@ -28,25 +33,23 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
 }
 
 dependencies {
-
-    // ARCHITECTURE
-    implementation(project(":data"))
-
-    // DEFAULT
-    implementation(libs.core.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.material)
-    implementation(libs.constraintlayout)
 
     // COROUTINES
     implementation(libs.bundles.coroutines)
@@ -61,9 +64,6 @@ dependencies {
     // ROOM DB
     implementation(libs.bundles.room.database)
     kapt(libs.room.compiler)
-
-    // COIL
-    implementation(libs.coil.kt)
 
     // PLAY SERVICES
     implementation(libs.play.services.location)

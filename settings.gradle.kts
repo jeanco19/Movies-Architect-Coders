@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Movies Architect Coders"
 include(":app")
+include(":data")
