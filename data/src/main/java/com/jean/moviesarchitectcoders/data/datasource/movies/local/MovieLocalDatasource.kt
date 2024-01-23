@@ -11,4 +11,6 @@ interface MovieLocalDatasource {
 
     fun getMovies(): Flow<List<Movie>>
 
+    fun getMovieById(movieId: Int): Flow<Movie>
+
 }

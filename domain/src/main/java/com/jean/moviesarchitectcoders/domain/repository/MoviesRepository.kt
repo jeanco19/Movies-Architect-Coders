@@ -9,6 +9,8 @@ interface MoviesRepository {
 
     fun getMovies(region: String): Flow<List<Movie>>
 
+    fun getMovieById(movieId: Int): Flow<Movie>
+
     suspend fun saveFavorite(movie: Movie)
 
 }

@@ -31,6 +31,10 @@ class MoviesRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun getMovieById(movieId: Int): Flow<Movie> {
+        return localDatasource.getMovieById(movieId)
+    }
+
     override suspend fun saveFavorite(movie: Movie) {
         localDatasource.saveFavoriteMovie(movie)
     }

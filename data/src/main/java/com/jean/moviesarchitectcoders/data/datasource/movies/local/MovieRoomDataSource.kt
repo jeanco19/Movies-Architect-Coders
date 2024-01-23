@@ -21,7 +21,11 @@ class MovieRoomDataSource @Inject constructor(
     }
 
     override fun getMovies(): Flow<List<Movie>> {
-        return dao.getMovies().map { it.toDomain() }
+        return dao.getMovies().map { movieEntities -> movieEntities.toDomain() }
+    }
+
+    override fun getMovieById(movieId: Int): Flow<Movie> {
+        return dao.getMovieById(movieId).map { movieEntity -> movieEntity.toDomain() }
     }
 
 }
