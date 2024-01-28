@@ -5,11 +5,10 @@ import kotlinx.coroutines.flow.Flow
 
 interface MoviesRepository {
 
-    val movies: Flow<List<Movie>>
+    fun getMovies(region: String): Flow<Result<List<Movie>>>
+    fun getFavorites(): Flow<Result<List<Movie>>>
 
-    fun getMovies(region: String): Flow<List<Movie>>
-
-    fun getMovieById(movieId: Int): Flow<Movie>
+    fun getMovieById(movieId: Int): Flow<Result<Movie>>
 
     suspend fun saveFavorite(movie: Movie)
 

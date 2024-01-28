@@ -13,3 +13,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+/database/
+/network/
+/core/
+/movies/
+/.idea/

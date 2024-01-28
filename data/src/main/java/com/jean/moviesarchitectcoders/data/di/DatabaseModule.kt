@@ -19,7 +19,7 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun provideAppDatabase(@ApplicationContext context: Context): RoomDatabase {
+    fun provideAppDatabase(@ApplicationContext context: Context): MoviesDatabase {
         return Room.databaseBuilder(
             context,
             MoviesDatabase::class.java,
@@ -27,6 +27,7 @@ object DatabaseModule {
         ).build()
     }
 
+    @Singleton
     @Provides
     fun provideFavoriteDao(database: MoviesDatabase): MoviesDao {
         return database.moviesDao()

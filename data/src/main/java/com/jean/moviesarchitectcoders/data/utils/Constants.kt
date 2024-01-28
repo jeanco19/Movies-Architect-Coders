@@ -11,7 +11,4 @@ object Constants {
     const val MOVIES_DATABASE = "movies_database"
     const val MOVIES_TABLE = "movies"
 
-    // LOCATION
-    const val DEFAULT_REGION = "US"
-
 }

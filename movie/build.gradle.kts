@@ -1,20 +1,17 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt.android)
 }
 
 android {
-    namespace = "com.jean.moviesarchitectcoders"
+
+    namespace = "com.jean.moviesarchitectcoders.movie"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.jean.moviesarchitectcoders"
         minSdk = 25
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -47,14 +44,12 @@ android {
 dependencies {
 
     // ARCHITECTURE
-    implementation(project(":data"))
-    implementation(project(":movie"))
+    implementation(project(":domain"))
 
     // DEFAULT
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
-    implementation(libs.constraintlayout)
 
     // LIFECYCLE
     implementation(libs.lifecycle.viewmodel)
@@ -63,26 +58,16 @@ dependencies {
     // COROUTINES
     implementation(libs.bundles.coroutines)
 
-    // RETROFIT
-    implementation(libs.bundles.retrofit)
-
     // DAGGER HILT
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
-    // ROOM DB
-    implementation(libs.bundles.room.database)
-    kapt(libs.room.compiler)
+    // COIL
+    implementation(libs.coil.kt)
 
     // NAVIGATION
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
-
-    // COIL
-    implementation(libs.coil.kt)
-
-    // PLAY SERVICES
-    implementation(libs.play.services.location)
 
     // TEST
     testImplementation(libs.junit)

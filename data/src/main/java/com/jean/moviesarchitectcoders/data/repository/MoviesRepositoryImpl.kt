@@ -13,30 +13,48 @@ class MoviesRepositoryImpl @Inject constructor(
     private val localDatasource: MovieLocalDatasource
 ) : MoviesRepository {
 
-    override val movies: Flow<List<Movie>>
-        get() = localDatasource.getMovies()
-
-    override fun getMovies(region: String): Flow<List<Movie>> {
+    override fun getMovies(region: String): Flow<Result<List<Movie>>> {
         return flow {
-            localDatasource.getMovies().collect { movies ->
-                if (movies.isEmpty()) getAndSaveRemoteMovies(region)
+            try {
+                localDatasource.getMovies().collect { localMovies ->
+                    if (localMovies.isEmpty()) {
+                        remoteDataSource.getNowPlayingMovies(region).onEach { saveFavorite(it) }
+                    }
+                    emit(Result.success(localMovies))
+                }
+            } catch (exception: Exception) {
+                emit(Result.failure(exception))
             }
-            localDatasource.getMovies()
         }
     }
 
-    private suspend fun getAndSaveRemoteMovies(region: String) {
-        remoteDataSource.getNowPlayingMovies(region).map { movie ->
-            localDatasource.saveMovie(movie)
+    override fun getFavorites(): Flow<Result<List<Movie>>> {
+        return flow {
+            try {
+                localDatasource.getMovies().collect { movies ->
+                    emit(Result.success(movies.filter { movie -> movie.isFavorite }))
+                }
+            } catch (exception: Exception) {
+                emit(Result.failure(exception))
+            }
         }
     }
 
-    override fun getMovieById(movieId: Int): Flow<Movie> {
-        return localDatasource.getMovieById(movieId)
+    override fun getMovieById(movieId: Int): Flow<Result<Movie>> {
+        return flow {
+            try {
+                localDatasource.getMovieById(movieId).collect { movie ->
+                    emit(Result.success(movie))
+                }
+            } catch (exception: Exception) {
+                emit(Result.failure(exception))
+            }
+        }
     }
 
     override suspend fun saveFavorite(movie: Movie) {
-        localDatasource.saveFavoriteMovie(movie)
+        val updatedMovie = movie.copy(isFavorite = true)
+        localDatasource.saveFavoriteMovie(updatedMovie)
     }
 
 }

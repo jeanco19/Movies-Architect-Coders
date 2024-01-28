@@ -22,12 +22,12 @@ abstract class DatasourceModule {
 
     @Binds
     abstract fun bindMovieLocalDatasource(
-        localDatasource: MovieRoomDataSource
+        movieRoomDataSource: MovieRoomDataSource
     ): MovieLocalDatasource
 
     @Binds
     abstract fun bindLocationRemoteDatasource(
-        remoteDatasource: LocationPlayServicesDatasource
+        locationPlayServicesDatasource: LocationPlayServicesDatasource
     ): LocationDatasource
 
 }
