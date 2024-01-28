@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Movies Architect Coders</string>
+
+    <string name="movies_title">Películas</string>
+    <string name="favorites_title">Favoritas</string>
+
+    <string name="error_title">"Ha ocurrido un error</string>
+    <string name="error_message">Ha ocurrido un al obtener las películas. Por favor inténtalo de nuevo.</string>
+
 </resources>

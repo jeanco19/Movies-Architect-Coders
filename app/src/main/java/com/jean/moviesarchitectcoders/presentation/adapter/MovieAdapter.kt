@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.movie.presentation.adapter
+package com.jean.moviesarchitectcoders.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.jean.moviesarchitectcoders.databinding.ItemMovieBinding
 import com.jean.moviesarchitectcoders.domain.models.Movie
-import com.jean.moviesarchitectcoders.movie.databinding.ItemMovieBinding
 
 class MovieAdapter(
     private val onMovieClick: (movieId: Int) -> Unit
@@ -36,6 +36,9 @@ class MovieAdapter(
             }
             tvTitle.text = movie.title
             tvDescription.text = movie.overview
+            root.setOnClickListener {
+                onMovieClick(movie.id)
+            }
         }
 
     }

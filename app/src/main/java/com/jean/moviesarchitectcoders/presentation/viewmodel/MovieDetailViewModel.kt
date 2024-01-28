@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.movie.presentation.viewmodel
+package com.jean.moviesarchitectcoders.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

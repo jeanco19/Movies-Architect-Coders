@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.movie.presentation.viewmodel
+package com.jean.moviesarchitectcoders.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,14 +22,13 @@ class MovieViewModel @Inject constructor(
     val state: StateFlow<UiState> = _state.asStateFlow()
 
     init {
-        getMovies()
         getFavoriteMovies()
     }
 
-    private fun getMovies() {
+    fun getMovies(hasPermission: Boolean) {
         viewModelScope.launch {
             _state.value = UiState(isLoading = true)
-            getMoviesUseCase(hasPermissions = false).collect { result ->
+            getMoviesUseCase(hasPermissions = hasPermission).collect { result ->
                 result.onSuccess { movies ->
                     _state.value = UiState(
                         isLoading = false,
@@ -69,7 +68,6 @@ class MovieViewModel @Inject constructor(
         val hasFavorites: Boolean = false,
         val movies: List<Movie> = listOf(),
         val favorites: List<Movie> = listOf(),
-        val hasLocationPermission: Boolean = false,
         val hasError: Boolean = false
     )
 

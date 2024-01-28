@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.movie.presentation.adapter
+package com.jean.moviesarchitectcoders.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.jean.moviesarchitectcoders.databinding.ItemFavoriteBinding
 import com.jean.moviesarchitectcoders.domain.models.Movie
-import com.jean.moviesarchitectcoders.movie.databinding.ItemFavoriteBinding
 
 class FavoriteAdapter(
     private val onFavoriteClick: (movieId: Int) -> Unit
@@ -35,6 +35,9 @@ class FavoriteAdapter(
                 crossfade(true)
             }
             tvTitle.text = movie.title
+            root.setOnClickListener {
+                onFavoriteClick(movie.id)
+            }
         }
 
     }

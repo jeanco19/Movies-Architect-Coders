@@ -1,5 +1,6 @@
-package com.jean.moviesarchitectcoders.movie.utils
+package com.jean.moviesarchitectcoders.utils
 
+import android.Manifest
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -16,5 +17,11 @@ fun <T> LifecycleOwner.launchAndCollect(
         repeatOnLifecycle(state) {
             flow.collect(body)
         }
+    }
+}
+
+fun Permissions.toAndroidId(): String {
+    return when (this) {
+        Permissions.COARSE_LOCATION -> Manifest.permission.ACCESS_COARSE_LOCATION
     }
 }

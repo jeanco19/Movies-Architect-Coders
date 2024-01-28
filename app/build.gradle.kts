@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.safe.args)
 }
 
 android {
@@ -48,13 +49,14 @@ dependencies {
 
     // ARCHITECTURE
     implementation(project(":data"))
-    implementation(project(":movie"))
+    implementation(project(":domain"))
 
     // DEFAULT
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
+    implementation(libs.fragment.ktx)
 
     // LIFECYCLE
     implementation(libs.lifecycle.viewmodel)
