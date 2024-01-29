@@ -7,7 +7,7 @@ interface MovieLocalDatasource {
 
     suspend fun saveMovie(movie: Movie)
 
-    suspend fun saveFavoriteMovie(movie: Movie)
+    suspend fun saveFavorite(movie: Movie)
 
     fun getMovies(): Flow<List<Movie>>
 

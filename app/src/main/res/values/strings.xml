@@ -6,5 +6,10 @@
 
     <string name="error_title">"Ha ocurrido un error</string>
     <string name="error_message">Ha ocurrido un al obtener las películas. Por favor inténtalo de nuevo.</string>
+    <string name="error_detail_message">Ha ocurrido un al obtener el detalle. Por favor inténtalo de nuevo.</string>
+
+    <string name="information_name">Información</string>
+    <string name="release_date_name">Fecha de estreno:</string>
+    <string name="average_name">Calificación:</string>
 
 </resources>

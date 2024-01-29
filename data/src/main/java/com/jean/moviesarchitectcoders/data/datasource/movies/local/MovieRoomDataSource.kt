@@ -16,7 +16,7 @@ class MovieRoomDataSource @Inject constructor(
         dao.saveMovie(movie.toEntity())
     }
 
-    override suspend fun saveFavoriteMovie(movie: Movie) {
+    override suspend fun saveFavorite(movie: Movie) {
         dao.saveFavorite(movie.toEntity())
     }
 

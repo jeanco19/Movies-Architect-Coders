@@ -18,7 +18,9 @@ class MoviesRepositoryImpl @Inject constructor(
             try {
                 localDatasource.getMovies().collect { localMovies ->
                     if (localMovies.isEmpty()) {
-                        remoteDataSource.getNowPlayingMovies(region).onEach { saveFavorite(it) }
+                        remoteDataSource.getNowPlayingMovies(region).onEach { movie ->
+                            localDatasource.saveFavorite(movie)
+                        }
                     }
                     emit(Result.success(localMovies))
                 }
@@ -32,7 +34,7 @@ class MoviesRepositoryImpl @Inject constructor(
         return flow {
             try {
                 localDatasource.getMovies().collect { movies ->
-                    emit(Result.success(movies.filter { movie -> movie.isFavorite }))
+                    emit(Result.success(movies.filter { it.isFavorite == true }))
                 }
             } catch (exception: Exception) {
                 emit(Result.failure(exception))
@@ -53,8 +55,8 @@ class MoviesRepositoryImpl @Inject constructor(
     }
 
     override suspend fun saveFavorite(movie: Movie) {
-        val updatedMovie = movie.copy(isFavorite = true)
-        localDatasource.saveFavoriteMovie(updatedMovie)
+        val updatedMovie = movie.copy(isFavorite = !movie.isFavorite)
+        localDatasource.saveFavorite(updatedMovie)
     }
 
 }
