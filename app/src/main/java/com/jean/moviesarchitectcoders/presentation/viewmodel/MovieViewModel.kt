@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,42 +22,43 @@ class MovieViewModel @Inject constructor(
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState> = _state.asStateFlow()
 
-    init {
-        getFavoriteMovies()
-    }
-
     fun getMovies(hasPermission: Boolean) {
         viewModelScope.launch {
-            _state.value = UiState(isLoading = true)
+            _state.update { state -> state.copy(isLoading = true) }
             getMoviesUseCase(hasPermissions = hasPermission).collect { result ->
                 result.onSuccess { movies ->
-                    _state.value = UiState(
-                        isLoading = false,
-                        hasMovies = movies.isNotEmpty(),
-                        movies = movies,
-                        hasError = false
-                    )
+                    _state.update { state ->
+                        state.copy(
+                            isLoading = false,
+                            hasMovies = movies.isNotEmpty(),
+                            movies = movies,
+                            hasError = false
+                        )
+                    }
                 }
                 result.onFailure {
-                    _state.value = UiState(isLoading = false, hasError = true)
+                    _state.update { state ->
+                        state.copy(
+                            isLoading = false,
+                            hasError = true
+                        )
+                    }
                 }
             }
         }
     }
 
-    private fun getFavoriteMovies() {
+    fun getFavoriteMovies() {
         viewModelScope.launch {
             getFavoriteMoviesUseCase().collect { result ->
-                result.onSuccess { movies ->
-                    _state.value = UiState(
-                        isLoading = false,
-                        hasFavorites = movies.isNotEmpty(),
-                        favorites = movies,
-                        hasError = false
-                    )
-                }
-                result.onFailure {
-                    _state.value = UiState(isLoading = false, hasError = true)
+                result.onSuccess { favorites ->
+                    _state.update { state ->
+                        state.copy(
+                            hasFavorites = favorites.isNotEmpty(),
+                            favorites = favorites,
+                            hasError = false
+                        )
+                    }
                 }
             }
         }

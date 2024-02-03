@@ -117,6 +117,11 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
         favoriteAdapter.submitList(uiState.favorites)
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getFavoriteMovies()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
