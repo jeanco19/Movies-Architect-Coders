@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
-class MovieRoomDataSource @Inject constructor(
+class MovieRoomDatasource @Inject constructor(
     private val dao: MoviesDao
 ) : MovieLocalDatasource {
 

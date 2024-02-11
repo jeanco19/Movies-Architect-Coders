@@ -1,12 +1,12 @@
-package com.jean.moviesarchitectcoders.data.di
+package com.jean.moviesarchitectcoders.di
 
+import com.jean.moviesarchitectcoders.data.di.NetworkModule
 import com.jean.moviesarchitectcoders.data.network.MoviesApiService
 import com.jean.moviesarchitectcoders.data.network.interceptor.ApiKeyInterceptor
-import com.jean.moviesarchitectcoders.data.utils.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
-import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import dagger.hilt.testing.TestInstallIn
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -14,16 +14,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@InstallIn(SingletonComponent::class)
-object NetworkModule {
+@TestInstallIn(components = [SingletonComponent::class], replaces = [NetworkModule::class])
+object TestNetworkModule {
 
     @Singleton
     @Provides
-    fun provideBaseUrl(): String = BASE_URL
-
-    @Singleton
-    @Provides
-    fun provideApiKeyInterceptor(): ApiKeyInterceptor = ApiKeyInterceptor()
+    fun provideBaseUrl(): String = "http://localhost:8080"
 
     @Singleton
     @Provides
@@ -36,12 +32,10 @@ object NetworkModule {
     @Singleton
     @Provides
     fun provideOkHttpClient(
-        apiKeyInterceptor: ApiKeyInterceptor,
         loggingInterceptor: HttpLoggingInterceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
-            .addInterceptor(apiKeyInterceptor)
             .build()
     }
 

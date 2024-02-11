@@ -1,7 +1,7 @@
 package com.jean.moviesarchitectcoders.data.repository
 
 import com.jean.moviesarchitectcoders.data.datasource.movies.local.MovieLocalDatasource
-import com.jean.moviesarchitectcoders.data.datasource.movies.remote.MovieRemoteDataSource
+import com.jean.moviesarchitectcoders.data.datasource.movies.remote.MovieRemoteDatasource
 import com.jean.moviesarchitectcoders.domain.models.Movie
 import com.jean.moviesarchitectcoders.domain.repository.MoviesRepository
 import kotlinx.coroutines.flow.Flow
@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class MoviesRepositoryImpl @Inject constructor(
-    private val remoteDataSource: MovieRemoteDataSource,
+    private val remoteDataSource: MovieRemoteDatasource,
     private val localDatasource: MovieLocalDatasource
 ) : MoviesRepository {
 

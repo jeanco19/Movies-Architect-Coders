@@ -1,11 +1,11 @@
 package com.jean.moviesarchitectcoders.data.di
 
 import com.jean.moviesarchitectcoders.data.datasource.movies.local.MovieLocalDatasource
-import com.jean.moviesarchitectcoders.data.datasource.movies.local.MovieRoomDataSource
+import com.jean.moviesarchitectcoders.data.datasource.movies.local.MovieRoomDatasource
 import com.jean.moviesarchitectcoders.data.datasource.location.LocationPlayServicesDatasource
 import com.jean.moviesarchitectcoders.data.datasource.location.LocationDatasource
-import com.jean.moviesarchitectcoders.data.datasource.movies.remote.MovieRemoteDataSource
-import com.jean.moviesarchitectcoders.data.datasource.movies.remote.MoviesRetrofitDataSource
+import com.jean.moviesarchitectcoders.data.datasource.movies.remote.MovieRemoteDatasource
+import com.jean.moviesarchitectcoders.data.datasource.movies.remote.MovieRetrofitDatasource
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -17,12 +17,12 @@ abstract class DatasourceModule {
 
     @Binds
     abstract fun bindMovieRemoteDatasource(
-        remoteDatasource: MoviesRetrofitDataSource
-    ): MovieRemoteDataSource
+        remoteDatasource: MovieRetrofitDatasource
+    ): MovieRemoteDatasource
 
     @Binds
     abstract fun bindMovieLocalDatasource(
-        movieRoomDataSource: MovieRoomDataSource
+        movieRoomDataSource: MovieRoomDatasource
     ): MovieLocalDatasource
 
     @Binds

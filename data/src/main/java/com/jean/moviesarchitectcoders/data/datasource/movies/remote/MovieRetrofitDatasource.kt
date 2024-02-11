@@ -5,9 +5,9 @@ import com.jean.moviesarchitectcoders.domain.models.Movie
 import com.jean.moviesarchitectcoders.data.network.MoviesApiService
 import javax.inject.Inject
 
-class MoviesRetrofitDataSource @Inject constructor(
+class MovieRetrofitDatasource @Inject constructor(
     private val apiService: MoviesApiService
-) : MovieRemoteDataSource {
+) : MovieRemoteDatasource {
 
     override suspend fun getNowPlayingMovies(region: String): List<Movie> {
         return apiService.getNowPlayingMovies(region).body()?.results?.map { movieApiModel ->

@@ -14,7 +14,7 @@ lifecycleVersion = "2.6.1"
 
 # RETROFIT
 retrofitVersion = "2.9.0"
-loggingInterceptorVersion = "4.9.3"
+okHttp3Version = "4.9.3"
 
 # DAGGER HILT
 hiltVersion = "2.48"
@@ -34,6 +34,7 @@ playServicesLocationVersion = "21.0.1"
 # TEST
 junitVersion = "4.13.2"
 espressoCoreVersion = "3.5.1"
+mockkVersion = "1.13.9"
 
 # ANDROID TEST
 junit = "1.1.5"
@@ -65,7 +66,8 @@ kotlinx-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-cor
 # RETROFIT
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofitVersion" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "loggingInterceptorVersion" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okHttp3Version" }
+mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "okHttp3Version" }
 
 #DAGGER HILT
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
@@ -90,10 +92,14 @@ play-services-location = { module = "com.google.android.gms:play-services-locati
 
 # TEST
 junit = { module = "junit:junit", version.ref = "junitVersion" }
-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockkVersion" }
 
 # ANDROID TEST
 ext-junit = { module = "androidx.test.ext:junit", version.ref = "junit" }
+espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
+hilt-android-test = { module = "com.google.dagger:hilt-android-testing", version.ref = "hiltVersion" }
+hilt-android-compiler-test = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hiltVersion" }
+coroutines-android-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutinesVersion" }
 
 
 [bundles]
@@ -115,6 +121,22 @@ retrofit = [
 coroutines = [
     "kotlinx-coroutines-android",
     "kotlinx-coroutines-play-services"
+]
+
+# TESTING
+testing = [
+    "junit",
+    "mockk",
+    "coroutines-android-test"
+]
+
+# ANDROID TESTING
+androidTesting = [
+    "ext-junit",
+    "espresso-core",
+    "hilt-android-test",
+    "mockwebserver",
+    "coroutines-android-test"
 ]
 
 

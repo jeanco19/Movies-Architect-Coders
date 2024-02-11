@@ -16,7 +16,7 @@ android {
     defaultConfig {
         minSdk = 25
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.jean.moviesarchitectcoders.di.HiltTestRunner"
 
         val properties = Properties().apply {
             load(FileInputStream(File(rootProject.rootDir, "local.properties")))
@@ -72,11 +72,11 @@ dependencies {
     implementation(libs.play.services.location)
 
     // TEST
-    testImplementation(libs.junit)
+    testImplementation(libs.bundles.testing)
 
     // ANDROID TEST
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.bundles.androidTesting)
+    kaptAndroidTest(libs.hilt.android.compiler.test)
 
 }
 
