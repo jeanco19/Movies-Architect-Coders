@@ -3,8 +3,8 @@ package com.jean.moviesarchitectcoders.data.datasource.movies.remote
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jean.moviesarchitectcoders.data.mappers.toDomain
 import com.jean.moviesarchitectcoders.data.network.MoviesApiService
-import com.jean.moviesarchitectcoders.data.network.models.expectedMovies
 import com.jean.moviesarchitectcoders.utils.MockWebServerRule
+import com.jean.moviesarchitectcoders.utils.expectedMovies
 import com.jean.moviesarchitectcoders.utils.fromJson
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest

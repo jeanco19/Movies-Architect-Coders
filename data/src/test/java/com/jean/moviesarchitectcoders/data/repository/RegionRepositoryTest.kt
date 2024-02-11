@@ -12,7 +12,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @ExperimentalCoroutinesApi
-class RegionRepositoryImplTest {
+class RegionRepositoryTest {
 
     @get:Rule
     val coroutineTestRule = CoroutineTestRule()

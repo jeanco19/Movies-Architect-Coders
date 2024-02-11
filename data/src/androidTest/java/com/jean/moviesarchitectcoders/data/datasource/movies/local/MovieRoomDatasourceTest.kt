@@ -2,7 +2,7 @@ package com.jean.moviesarchitectcoders.data.datasource.movies.local
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.jean.moviesarchitectcoders.data.database.dao.MoviesDao
-import com.jean.moviesarchitectcoders.data.network.models.movieEntity
+import com.jean.moviesarchitectcoders.utils.movieEntity
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
