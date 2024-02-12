@@ -1,6 +1,6 @@
 package com.jean.moviesarchitectcoders.data.repository
 
-import com.jean.moviesarchitectcoders.data.datasource.location.LocationPlayServicesDatasourceStub
+import com.jean.moviesarchitectcoders.data.datasource.location.StubLocationPlayServicesDatasource
 import com.jean.moviesarchitectcoders.data.utils.CoroutineTestRule
 import com.jean.moviesarchitectcoders.domain.repository.RegionRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -17,12 +17,12 @@ class RegionRepositoryTest {
     @get:Rule
     val coroutineTestRule = CoroutineTestRule()
 
-    private lateinit var locationStub: LocationPlayServicesDatasourceStub
+    private lateinit var locationStub: StubLocationPlayServicesDatasource
     private lateinit var sut: RegionRepository
 
     @Before
     fun setUp() {
-        locationStub = LocationPlayServicesDatasourceStub()
+        locationStub = StubLocationPlayServicesDatasource()
         sut = RegionRepositoryImpl(locationStub)
     }
 

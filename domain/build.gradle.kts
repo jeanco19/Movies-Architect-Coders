@@ -46,11 +46,7 @@ dependencies {
     kapt(libs.hilt.android.compiler)
 
     // TEST
-    testImplementation(libs.junit)
-
-    // ANDROID TEST
-    androidTestImplementation(libs.ext.junit)
-    androidTestImplementation(libs.espresso.core)
+    testImplementation(libs.bundles.testing)
 
 }
 

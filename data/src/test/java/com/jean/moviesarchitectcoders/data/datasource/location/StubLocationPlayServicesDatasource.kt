@@ -1,6 +1,6 @@
 package com.jean.moviesarchitectcoders.data.datasource.location
 
-class LocationPlayServicesDatasourceStub : LocationDatasource {
+class StubLocationPlayServicesDatasource : LocationDatasource {
 
     override suspend fun findLastRegion(): String? = null
 
