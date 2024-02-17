@@ -9,7 +9,7 @@ class GetMovieByIdUseCase @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) {
 
-    operator fun invoke(movieId: Int): Flow<Result<Movie>> {
+    suspend operator fun invoke(movieId: Int): Result<Flow<Movie>> {
         return moviesRepository.getMovieById(movieId)
     }
 

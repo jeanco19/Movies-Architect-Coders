@@ -1,16 +1,22 @@
 package com.jean.moviesarchitectcoders.viewmodel
 
+import app.cash.turbine.test
 import com.jean.moviesarchitectcoders.data.repository.MoviesRepositoryImpl
 import com.jean.moviesarchitectcoders.data.repository.RegionRepositoryImpl
-import com.jean.moviesarchitectcoders.domain.repository.MoviesRepository
-import com.jean.moviesarchitectcoders.domain.repository.RegionRepository
+import com.jean.moviesarchitectcoders.domain.models.Movie
 import com.jean.moviesarchitectcoders.domain.usecases.GetFavoriteMoviesUseCase
 import com.jean.moviesarchitectcoders.domain.usecases.GetMoviesUseCase
 import com.jean.moviesarchitectcoders.presentation.viewmodel.MovieViewModel
 import com.jean.moviesarchitectcoders.utils.CoroutineTestRule
+import com.jean.moviesarchitectcoders.utils.FakeLocationDatasource
+import com.jean.moviesarchitectcoders.utils.FakeMovieLocalDatasource
+import com.jean.moviesarchitectcoders.utils.FakeMovieRemoteDatasource
+import com.jean.moviesarchitectcoders.utils.expectedMovies
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Before
+import kotlinx.coroutines.test.runTest
+import org.junit.Assert.assertEquals
 import org.junit.Rule
+import org.junit.Test
 
 @ExperimentalCoroutinesApi
 class MovieViewModelTest {
@@ -18,42 +24,51 @@ class MovieViewModelTest {
     @get:Rule
     val coroutineTestRule = CoroutineTestRule()
 
-    private lateinit var remoteDatasource: FakeMovieRemoteDatasource
-    private lateinit var localDatasource: FakeMovieLocalDatasource
-    private lateinit var moviesRepository: MoviesRepository
+    @Test
+    fun `verify when call get movies and local data is empty, then return remote movies`() = runTest {
+        val remoteData = expectedMovies
+        val sut = buildViewModelWith(remoteData = remoteData)
 
-    private lateinit var locationDatasource: FakeLocationDatasource
-    private lateinit var regionRepository: RegionRepository
+        sut.getMovies(hasPermission = true)
 
-    private lateinit var getMovieUseCase: GetMoviesUseCase
-    private lateinit var getFavoriteUseCase: GetFavoriteMoviesUseCase
-
-    private lateinit var sut: MovieViewModel
-
-    @Before
-    fun setUp() {
-        remoteDatasource = FakeMovieRemoteDatasource()
-        localDatasource = FakeMovieLocalDatasource()
-        moviesRepository = MoviesRepositoryImpl(
-            remoteDatasource,
-            localDatasource
-        )
-
-        locationDatasource = FakeLocationDatasource()
-        regionRepository = RegionRepositoryImpl(locationDatasource)
-
-        getMovieUseCase = GetMoviesUseCase(
-            moviesRepository,
-            regionRepository
-        )
-        getFavoriteUseCase = GetFavoriteMoviesUseCase(moviesRepository)
-
-        sut = MovieViewModel(
-            getFavoriteUseCase,
-            getMovieUseCase
-        )
+        sut.state.test {
+            assertEquals(MovieViewModel.UiState(), awaitItem())
+            assertEquals(MovieViewModel.UiState(isLoading = true), awaitItem())
+            assertEquals(MovieViewModel.UiState(movies = expectedMovies, hasMovies = true), awaitItem())
+            cancel()
+        }
     }
 
-    // TODO create viewmodel test cases
+    @Test
+    fun `verify when call get movies have local data, then return local movies`() = runTest {
+        val localData = expectedMovies
+        val sut = buildViewModelWith(localData = localData)
+
+        sut.getMovies(hasPermission = true)
+
+        sut.state.test {
+            assertEquals(MovieViewModel.UiState(), awaitItem())
+            assertEquals(MovieViewModel.UiState(isLoading = true), awaitItem())
+            assertEquals(MovieViewModel.UiState(movies = expectedMovies, hasMovies = true), awaitItem())
+            cancel()
+        }
+    }
+
+    private fun buildViewModelWith(
+        remoteData: List<Movie> = emptyList(),
+        localData: List<Movie> = emptyList()
+    ): MovieViewModel {
+        val locationDataSource = FakeLocationDatasource()
+        val regionRepository = RegionRepositoryImpl(locationDataSource)
+
+        val remoteMoviesDatasource = FakeMovieRemoteDatasource().apply { movies = remoteData }
+        val localMoviesDatasource = FakeMovieLocalDatasource().apply { moviesInMemory = localData.toMutableList() }
+        val moviesRepository = MoviesRepositoryImpl(remoteMoviesDatasource, localMoviesDatasource)
+
+        val getMoviesUseCase = GetMoviesUseCase(moviesRepository, regionRepository)
+        val getFavoriteMoviesUseCase = GetFavoriteMoviesUseCase(moviesRepository)
+
+        return MovieViewModel(getFavoriteMoviesUseCase, getMoviesUseCase)
+    }
 
 }

@@ -5,11 +5,15 @@ import kotlinx.coroutines.flow.Flow
 
 interface MovieLocalDatasource {
 
+    suspend fun hasEmptyList(): Boolean
+
     suspend fun saveMovie(movie: Movie)
 
     suspend fun saveFavorite(movie: Movie)
 
     fun getMovies(): Flow<List<Movie>>
+
+    fun getFavoriteMovies(): Flow<List<Movie>>
 
     fun getMovieById(movieId: Int): Flow<Movie>
 

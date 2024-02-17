@@ -5,7 +5,6 @@ import com.jean.moviesarchitectcoders.data.datasource.movies.remote.MovieRemoteD
 import com.jean.moviesarchitectcoders.data.utils.CoroutineTestRule
 import com.jean.moviesarchitectcoders.data.utils.expectedMovies
 import com.jean.moviesarchitectcoders.data.utils.movie
-import com.jean.moviesarchitectcoders.domain.models.Movie
 import com.jean.moviesarchitectcoders.domain.repository.MoviesRepository
 import io.mockk.coEvery
 import io.mockk.coJustRun
@@ -46,11 +45,9 @@ class MoviesRepositoryTest {
 
     @Test
     fun `verify when the local data is empty, then calls then remote datasource`() = runTest {
-        val localMovies = listOf<Movie>()
+        coEvery { localDatasource.hasEmptyList() } returns true
 
-        coEvery { localDatasource.getMovies() } returns flowOf(localMovies)
-
-        sut.getMovies("US").first()
+        sut.getMovies("US")
 
         coVerify(exactly = 1) { remoteDatasource.getNowPlayingMovies("US") }
     }
@@ -59,14 +56,14 @@ class MoviesRepositoryTest {
     fun `given existing local data, when call get movies, then returns the local data`() = runTest {
         val localMovies = expectedMovies
 
-        coEvery { localDatasource.saveMovie(expectedMovies.first()) }
+        coEvery { localDatasource.hasEmptyList() } returns false
+        coEvery { localDatasource.getMovies() } returns flowOf(expectedMovies)
 
-        sut.getMovies("US").first().let { result ->
-            result.onSuccess {  movies ->
-                assertEquals(localMovies.first(), movies.first())
-            }
+        sut.getMovies("US").onSuccess { moviesResult ->
+            assertEquals(localMovies.first(), moviesResult.first().first())
         }
 
+        coVerify(exactly = 0) { remoteDatasource.getNowPlayingMovies("US") }
         coVerify(exactly = 1) { localDatasource.getMovies()  }
     }
 
@@ -76,11 +73,9 @@ class MoviesRepositoryTest {
 
         sut.saveFavorite(movie.copy(isFavorite = false))
 
-        sut.getFavorites().first().let { result ->
-            result.onSuccess { movies ->
-                assertEquals(expectedMovie, movies.first())
-                assertTrue(movies.first().isFavorite)
-            }
+        sut.getFavorites().onSuccess { moviesResult ->
+            assertEquals(expectedMovie, moviesResult.first().first())
+            assertTrue(moviesResult.first().first().isFavorite)
         }
     }
 
@@ -90,10 +85,8 @@ class MoviesRepositoryTest {
 
         coJustRun { localDatasource.saveFavorite(movie) }
 
-        sut.getMovieById(movie.id).first().let { result ->
-            result.onSuccess {  movie ->
-                assertEquals(expectedMovie, movie)
-            }
+        sut.getMovieById(movie.id).onSuccess {  moviesResult ->
+            assertEquals(expectedMovie, moviesResult.first())
         }
     }
 

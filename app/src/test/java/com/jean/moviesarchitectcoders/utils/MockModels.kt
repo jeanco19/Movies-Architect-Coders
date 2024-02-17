@@ -21,12 +21,12 @@ val expectedMovies = listOf(
     )
 )
 
-val movie = Movie(
+val expectedMovie = Movie(
     id = 933131,
     title = "Badland Hunters",
     overview = "After a deadly earthquake turns Seoul into a lawless badland, a fearless huntsman springs into action to rescue a teenager abducted by a mad doctor.",
     posterPath = "/zVMyvNowgbsBAL6O6esWfRpAcOb.jpg",
     releaseDate = "2024-01-26",
     voteAverage = 6.805,
-    isFavorite = true
+    isFavorite = false
 )

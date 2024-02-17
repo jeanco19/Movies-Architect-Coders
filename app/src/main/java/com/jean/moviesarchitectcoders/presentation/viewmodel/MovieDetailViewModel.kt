@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -24,14 +25,26 @@ class MovieDetailViewModel @Inject constructor(
     fun getMovieById(movieId: Int) {
         viewModelScope.launch {
             _state.value = UiState(isLoading = true)
-            getMovieByIdUseCase(movieId).collect { result ->
-                result.onSuccess { movie ->
-                    _state.value = UiState(isLoading = false, movie = movie, hasError = false)
+            getMovieByIdUseCase(movieId)
+                .onSuccess { movieResult ->
+                    movieResult.collect { movie ->
+                        _state.update { state ->
+                            state.copy(
+                                isLoading = false,
+                                movie = movie,
+                                hasError = false
+                            )
+                        }
+                    }
                 }
-                result.onFailure {
-                    _state.value = UiState(isLoading = false, hasError = true)
+                .onFailure {
+                    _state.update { state ->
+                        state.copy(
+                            isLoading = false,
+                            hasError = true
+                        )
+                    }
                 }
-            }
         }
     }
 

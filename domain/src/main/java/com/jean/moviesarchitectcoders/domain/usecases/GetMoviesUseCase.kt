@@ -12,7 +12,7 @@ class GetMoviesUseCase @Inject constructor(
     private val regionRepository: RegionRepository
 ) {
 
-    suspend operator fun invoke(hasPermissions: Boolean): Flow<Result<List<Movie>>> {
+    suspend operator fun invoke(hasPermissions: Boolean): Result<Flow<List<Movie>>> {
         val region = if (hasPermissions) regionRepository.findLastRegion() else DEFAULT_REGION
         return moviesRepository.getMovies(region)
     }

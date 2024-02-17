@@ -25,18 +25,19 @@ class MovieViewModel @Inject constructor(
     fun getMovies(hasPermission: Boolean) {
         viewModelScope.launch {
             _state.update { state -> state.copy(isLoading = true) }
-            getMoviesUseCase(hasPermissions = hasPermission).collect { result ->
-                result.onSuccess { movies ->
-                    _state.update { state ->
-                        state.copy(
-                            isLoading = false,
-                            hasMovies = movies.isNotEmpty(),
-                            movies = movies,
-                            hasError = false
-                        )
+            getMoviesUseCase(hasPermissions = hasPermission)
+                .onSuccess { movieResult ->
+                    movieResult.collect { movies ->
+                        _state.update { state ->
+                            state.copy(
+                                isLoading = false,
+                                hasMovies = movies.isNotEmpty(),
+                                movies = movies,
+                                hasError = false
+                            )
+                        }
                     }
-                }
-                result.onFailure {
+                }.onFailure {
                     _state.update { state ->
                         state.copy(
                             isLoading = false,
@@ -44,23 +45,23 @@ class MovieViewModel @Inject constructor(
                         )
                     }
                 }
-            }
         }
     }
 
     fun getFavoriteMovies() {
         viewModelScope.launch {
-            getFavoriteMoviesUseCase().collect { result ->
-                result.onSuccess { favorites ->
-                    _state.update { state ->
-                        state.copy(
-                            hasFavorites = favorites.isNotEmpty(),
-                            favorites = favorites,
-                            hasError = false
-                        )
+            getFavoriteMoviesUseCase()
+                .onSuccess { favoritesResult ->
+                    favoritesResult.collect { favorites ->
+                        _state.update { state ->
+                            state.copy(
+                                hasFavorites = favorites.isNotEmpty(),
+                                favorites = favorites,
+                                hasError = false
+                            )
+                        }
                     }
                 }
-            }
         }
     }
 

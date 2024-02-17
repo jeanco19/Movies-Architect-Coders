@@ -9,7 +9,7 @@ class GetFavoriteMoviesUseCase @Inject constructor(
     private val moviesRepository: MoviesRepository
 ) {
 
-    operator fun invoke(): Flow<Result<List<Movie>>> {
+    suspend operator fun invoke(): Result<Flow<List<Movie>>> {
         return moviesRepository.getFavorites()
     }
 

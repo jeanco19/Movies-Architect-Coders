@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import androidx.room.Upsert
 import com.jean.moviesarchitectcoders.data.database.entity.MovieEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -19,6 +18,12 @@ interface MoviesDao {
 
     @Query("SELECT * FROM movies")
     fun getMovies(): Flow<List<MovieEntity>?>
+
+    @Query("SELECT * FROM movies WHERE isFavorite")
+    fun getFavoriteMovies(): Flow<List<MovieEntity>?>
+
+    @Query("SELECT COUNT(id) FROM movies")
+    suspend fun movieCount(): Int
 
     @Query("SELECT * FROM movies WHERE id = :movieId")
     fun getMovieById(movieId: Int): Flow<MovieEntity>

@@ -56,12 +56,11 @@ class GetMoviesUseCaseTest {
         val expectedMovies = movies
 
         coEvery { regionRepository.findLastRegion() } returns "ES"
-        coEvery { moviesRepository.getMovies("ES") } returns flowOf(Result.success(movies))
+        coEvery { moviesRepository.getMovies("ES") } returns Result.success(flowOf(movies))
 
-        sut.invoke(hasPermissions = true).first().let { result ->
-            result.onSuccess { movies ->
-                assertEquals(expectedMovies, movies)
-            }
+
+        sut.invoke(hasPermissions = true).onSuccess { moviesResult ->
+            assertEquals(expectedMovies, moviesResult.first())
         }
     }
 
