@@ -1,5 +1,6 @@
 package com.jean.moviesarchitectcoders.presentation
 
+import android.Manifest
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,9 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,10 +21,8 @@ import com.jean.moviesarchitectcoders.presentation.adapter.FavoriteAdapter
 import com.jean.moviesarchitectcoders.presentation.adapter.MovieAdapter
 import com.jean.moviesarchitectcoders.presentation.viewmodel.MovieViewModel
 import com.jean.moviesarchitectcoders.utils.PermissionHandler
-import com.jean.moviesarchitectcoders.utils.Permissions
-import com.jean.moviesarchitectcoders.utils.launchAndCollect
-import com.jean.moviesarchitectcoders.utils.toAndroidId
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -60,12 +62,11 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
 
     private fun validatePermission() {
         permissionHandler.validatePermission(
-            permission = Permissions.COARSE_LOCATION,
             permissionGranted = {
                 viewModel.getMovies(hasPermission = true)
             },
             requirePermission = {
-                requestPermissionLauncher.launch(Permissions.COARSE_LOCATION.toAndroidId())
+                requestPermissionLauncher.launch(Manifest.permission.ACCESS_COARSE_LOCATION)
             }
         )
     }
@@ -105,13 +106,17 @@ class MovieFragment : Fragment(R.layout.fragment_movie) {
     }
 
     private fun setupObserver() {
-        viewLifecycleOwner.launchAndCollect(viewModel.state) { uiState -> handleUiState(uiState) }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { uiState -> handleUiState(uiState) }
+            }
+        }
     }
 
     private fun handleUiState(uiState: MovieViewModel.UiState) = with(binding) {
-        progressCircular.isVisible = uiState.isLoading
-        llFavoritesBlock.isVisible = uiState.hasFavorites
-        rvMovies.isVisible = uiState.hasMovies
+        tvFavoritesTitle.isVisible = uiState.hasFavorites
+        rvFavorites.isVisible = uiState.hasFavorites
+        rvMovies.isVisible = !uiState.hasError
         llMoviesError.isVisible = uiState.hasError
         movieAdapter.submitList(uiState.movies)
         favoriteAdapter.submitList(uiState.favorites)

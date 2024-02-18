@@ -1,11 +1,11 @@
-package com.jean.moviesarchitectcoders.viewmodel
+package com.jean.moviesarchitectcoders.presentation.viewmodel
 
 import app.cash.turbine.test
 import com.jean.moviesarchitectcoders.domain.usecases.GetMovieByIdUseCase
 import com.jean.moviesarchitectcoders.domain.usecases.SaveFavoriteMovieUseCase
 import com.jean.moviesarchitectcoders.presentation.viewmodel.MovieDetailViewModel
-import com.jean.moviesarchitectcoders.utils.CoroutineTestRule
-import com.jean.moviesarchitectcoders.utils.expectedMovie
+import com.jean.moviesarchitectcoders.presentation.utils.CoroutineTestRule
+import com.jean.moviesarchitectcoders.presentation.utils.expectedMovie
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit4.MockKRule

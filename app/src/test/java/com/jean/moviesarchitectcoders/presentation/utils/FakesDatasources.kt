@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.utils
+package com.jean.moviesarchitectcoders.presentation.utils
 
 import com.jean.moviesarchitectcoders.data.datasource.location.LocationDatasource
 import com.jean.moviesarchitectcoders.data.datasource.movies.local.MovieLocalDatasource

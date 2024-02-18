@@ -1,9 +1,13 @@
 package com.jean.moviesarchitectcoders.di
 
+import android.content.Context
 import com.jean.moviesarchitectcoders.data.di.NetworkModule
 import com.jean.moviesarchitectcoders.data.network.MoviesApiService
+import com.jean.moviesarchitectcoders.utils.PermissionHandler
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
 import okhttp3.OkHttpClient
@@ -13,8 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
-@TestInstallIn(components = [SingletonComponent::class], replaces = [NetworkModule::class])
-object TestNetworkModule {
+@TestInstallIn(components = [SingletonComponent::class], replaces = [AppModule::class, NetworkModule::class])
+object TestAppModule {
 
     @Singleton
     @Provides
@@ -39,6 +43,11 @@ object TestNetworkModule {
             .client(okHttpClient)
             .build()
             .create(MoviesApiService::class.java)
+    }
+
+    @Provides
+    fun providePermissionHandler(@ApplicationContext context: Context): PermissionHandler {
+        return PermissionHandler(context)
     }
 
 }

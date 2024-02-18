@@ -1,5 +1,6 @@
 package com.jean.moviesarchitectcoders.utils
 
+import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
@@ -8,14 +9,13 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 class PermissionHandler(@ApplicationContext private val context: Context) {
 
     fun validatePermission(
-        permission: Permissions,
         permissionGranted: () -> Unit,
         requirePermission: () -> Unit
     ) {
         when {
             ContextCompat.checkSelfPermission(
                 context,
-                permission.toAndroidId()
+                Manifest.permission.ACCESS_COARSE_LOCATION
             ) == PackageManager.PERMISSION_GRANTED -> {
                 permissionGranted()
             }
@@ -26,8 +26,4 @@ class PermissionHandler(@ApplicationContext private val context: Context) {
         }
     }
 
-}
-
-enum class Permissions {
-    COARSE_LOCATION
 }

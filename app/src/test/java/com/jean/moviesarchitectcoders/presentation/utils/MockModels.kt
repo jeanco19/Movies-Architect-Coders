@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.utils
+package com.jean.moviesarchitectcoders.presentation.utils
 
 import com.jean.moviesarchitectcoders.domain.models.Movie
 

@@ -27,22 +27,11 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
-    }
-
-    @Singleton
-    @Provides
-    fun provideOkHttpClient(
-        apiKeyInterceptor: ApiKeyInterceptor,
-        loggingInterceptor: HttpLoggingInterceptor
-    ): OkHttpClient {
-        return OkHttpClient.Builder()
-            .addInterceptor(loggingInterceptor)
+    fun provideOkHttpClient(apiKeyInterceptor: ApiKeyInterceptor): OkHttpClient = HttpLoggingInterceptor().run {
+        level = HttpLoggingInterceptor.Level.BODY
+        OkHttpClient.Builder()
             .addInterceptor(apiKeyInterceptor)
-            .build()
+            .addInterceptor(this).build()
     }
 
     @Singleton

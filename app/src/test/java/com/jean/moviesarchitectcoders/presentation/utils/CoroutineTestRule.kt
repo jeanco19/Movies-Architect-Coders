@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.utils
+package com.jean.moviesarchitectcoders.presentation.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

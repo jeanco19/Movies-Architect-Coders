@@ -1,4 +1,4 @@
-package com.jean.moviesarchitectcoders.viewmodel
+package com.jean.moviesarchitectcoders.presentation.viewmodel
 
 import app.cash.turbine.test
 import com.jean.moviesarchitectcoders.data.repository.MoviesRepositoryImpl
@@ -7,11 +7,11 @@ import com.jean.moviesarchitectcoders.domain.models.Movie
 import com.jean.moviesarchitectcoders.domain.usecases.GetFavoriteMoviesUseCase
 import com.jean.moviesarchitectcoders.domain.usecases.GetMoviesUseCase
 import com.jean.moviesarchitectcoders.presentation.viewmodel.MovieViewModel
-import com.jean.moviesarchitectcoders.utils.CoroutineTestRule
-import com.jean.moviesarchitectcoders.utils.FakeLocationDatasource
-import com.jean.moviesarchitectcoders.utils.FakeMovieLocalDatasource
-import com.jean.moviesarchitectcoders.utils.FakeMovieRemoteDatasource
-import com.jean.moviesarchitectcoders.utils.expectedMovies
+import com.jean.moviesarchitectcoders.presentation.utils.CoroutineTestRule
+import com.jean.moviesarchitectcoders.presentation.utils.FakeLocationDatasource
+import com.jean.moviesarchitectcoders.presentation.utils.FakeMovieLocalDatasource
+import com.jean.moviesarchitectcoders.presentation.utils.FakeMovieRemoteDatasource
+import com.jean.moviesarchitectcoders.presentation.utils.expectedMovies
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

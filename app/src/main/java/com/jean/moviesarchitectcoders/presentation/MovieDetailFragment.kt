@@ -7,14 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.jean.moviesarchitectcoders.R
 import com.jean.moviesarchitectcoders.databinding.FragmentMovieDetailBinding
 import com.jean.moviesarchitectcoders.domain.models.Movie
 import com.jean.moviesarchitectcoders.presentation.viewmodel.MovieDetailViewModel
-import com.jean.moviesarchitectcoders.utils.launchAndCollect
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
@@ -44,7 +47,11 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun setupObserver() {
-        viewLifecycleOwner.launchAndCollect(viewModel.state) { uiState -> handleUiState(uiState) }
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.state.collect { uiState -> handleUiState(uiState) }
+            }
+        }
     }
 
     private fun setupListeners() {
@@ -61,7 +68,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         llDetailError.isVisible = uiState.hasError
         clDetail.isVisible = !uiState.hasError
         ivPoster.load(uiState.movie?.posterPath)
-        tvTitle.text = uiState.movie?.title
+        tvTitleDetail.text = uiState.movie?.title
         tvDescription.text = uiState.movie?.overview
         tvReleaseDate.text = uiState.movie?.releaseDate
         tvAverage.text = uiState.movie?.voteAverage.toString()

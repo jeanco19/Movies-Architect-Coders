@@ -91,6 +91,7 @@ dependencies {
 
     // ANDROID TEST
     androidTestImplementation(libs.bundles.androidTesting)
+    androidTestImplementation(libs.bundles.uiTesting)
     kaptAndroidTest(libs.hilt.android.compiler.test)
 
 }

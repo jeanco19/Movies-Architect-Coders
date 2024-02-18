@@ -1,0 +1,397 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/pwGmXVKUgKN13psUjlhC9zBcq1o.jpg",
+      "genre_ids": [
+        878,
+        28,
+        12
+      ],
+      "id": 634492,
+      "original_language": "en",
+      "original_title": "Madame Web",
+      "overview": "Forced to confront revelations about her past, paramedic Cassandra Webb forges a relationship with three young women destined for powerful futures...if they can all survive a deadly present.",
+      "popularity": 1264.699,
+      "poster_path": "/rULWuutDcN5NvtiZi4FRPzRYWSh.jpg",
+      "release_date": "2024-02-14",
+      "title": "Madame Web",
+      "video": false,
+      "vote_average": 5.471,
+      "vote_count": 157
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4MCKNAc6AbWjEsM2h9Xc29owo4z.jpg",
+      "genre_ids": [
+        28,
+        53,
+        18
+      ],
+      "id": 866398,
+      "original_language": "en",
+      "original_title": "The Beekeeper",
+      "overview": "One man’s campaign for vengeance takes on national stakes after he is revealed to be a former operative of a powerful and clandestine organization known as Beekeepers.",
+      "popularity": 790.755,
+      "poster_path": "/A7EByudX0eOzlkQ2FIbogzyazm2.jpg",
+      "release_date": "2024-01-12",
+      "title": "The Beekeeper",
+      "video": false,
+      "vote_average": 7.258,
+      "vote_count": 1183
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/nTPFkLUARmo1bYHfkfdNpRKgEOs.jpg",
+      "genre_ids": [
+        35,
+        10749
+      ],
+      "id": 1072790,
+      "original_language": "en",
+      "original_title": "Anyone But You",
+      "overview": "After an amazing first date, Bea and Ben’s fiery attraction turns ice cold — until they find themselves unexpectedly reunited at a destination wedding in Australia. So they do what any two mature adults would do: pretend to be a couple.",
+      "popularity": 611.822,
+      "poster_path": "/yRt7MGBElkLQOYRvLTT1b3B1rcp.jpg",
+      "release_date": "2023-12-22",
+      "title": "Anyone But You",
+      "video": false,
+      "vote_average": 6.944,
+      "vote_count": 450
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/fm6KqXpk3M2HVveHwCrBSSBaO0V.jpg",
+      "genre_ids": [
+        18,
+        36
+      ],
+      "id": 872585,
+      "original_language": "en",
+      "original_title": "Oppenheimer",
+      "overview": "The story of J. Robert Oppenheimer's role in the development of the atomic bomb during World War II.",
+      "popularity": 480.927,
+      "poster_path": "/ptpr0kGAckfQkJeJIt8st5dglvd.jpg",
+      "release_date": "2024-01-12",
+      "title": "Oppenheimer",
+      "video": false,
+      "vote_average": 8.118,
+      "vote_count": 6723
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/1ZSKH5GGFlM8M32K34GMdaNS2Ew.jpg",
+      "genre_ids": [
+        10402,
+        18
+      ],
+      "id": 802219,
+      "original_language": "en",
+      "original_title": "Bob Marley: One Love",
+      "overview": "Jamaican singer-songwriter Bob Marley overcomes adversity to become the most famous reggae musician in the world.",
+      "popularity": 453.384,
+      "poster_path": "/1lQftpEARVVB9op4TaYiIbactzG.jpg",
+      "release_date": "2024-02-14",
+      "title": "Bob Marley: One Love",
+      "video": false,
+      "vote_average": 6.853,
+      "vote_count": 58
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jYEW5xZkZk2WTrdbMGAPFuBqbDc.jpg",
+      "genre_ids": [
+        878,
+        12
+      ],
+      "id": 438631,
+      "original_language": "en",
+      "original_title": "Dune",
+      "overview": "Paul Atreides, a brilliant and gifted young man born into a great destiny beyond his understanding, must travel to the most dangerous planet in the universe to ensure the future of his family and his people. As malevolent forces explode into conflict over the planet's exclusive supply of the most precious resource in existence-a commodity capable of unlocking humanity's greatest potential-only those who can conquer their fear will survive.",
+      "popularity": 377.644,
+      "poster_path": "/d5NXSklXo0qyIYkgV94XAgMIckC.jpg",
+      "release_date": "2024-02-09",
+      "title": "Dune",
+      "video": false,
+      "vote_average": 7.787,
+      "vote_count": 10092
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/bWIIWhnaoWx3FTVXv6GkYDv3djL.jpg",
+      "genre_ids": [
+        878,
+        27,
+        28
+      ],
+      "id": 940721,
+      "original_language": "ja",
+      "original_title": "ゴジラ-1.0",
+      "overview": "Postwar Japan is at its lowest point when a new crisis emerges in the form of a giant monster, baptized in the horrific power of the atomic bomb.",
+      "popularity": 312.304,
+      "poster_path": "/fk62hm95sVNHy5Lkx3d18wj1v19.jpg",
+      "release_date": "2023-12-01",
+      "title": "Godzilla Minus One",
+      "video": false,
+      "vote_average": 7.872,
+      "vote_count": 409
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4HodYYKEIsGOdinkGi2Ucz6X9i0.jpg",
+      "genre_ids": [
+        16,
+        28,
+        12,
+        878
+      ],
+      "id": 569094,
+      "original_language": "en",
+      "original_title": "Spider-Man: Across the Spider-Verse",
+      "overview": "After reuniting with Gwen Stacy, Brooklyn’s full-time, friendly neighborhood Spider-Man is catapulted across the Multiverse, where he encounters the Spider Society, a team of Spider-People charged with protecting the Multiverse’s very existence. But when the heroes clash on how to handle a new threat, Miles finds himself pitted against the other Spiders and must set out on his own to save those he loves most.",
+      "popularity": 266.792,
+      "poster_path": "/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg",
+      "release_date": "2024-01-19",
+      "title": "Spider-Man: Across the Spider-Verse",
+      "video": false,
+      "vote_average": 8.381,
+      "vote_count": 5771
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/fOy2Jurz9k6RnJnMUMRDAgBwru2.jpg",
+      "genre_ids": [
+        16,
+        10751,
+        35,
+        14
+      ],
+      "id": 508947,
+      "original_language": "en",
+      "original_title": "Turning Red",
+      "overview": "Thirteen-year-old Mei is experiencing the awkwardness of being a teenager with a twist – when she gets too excited, she transforms into a giant red panda.",
+      "popularity": 183.378,
+      "poster_path": "/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg",
+      "release_date": "2024-02-09",
+      "title": "Turning Red",
+      "video": false,
+      "vote_average": 7.411,
+      "vote_count": 4747
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/oBIQDKcqNxKckjugtmzpIIOgoc4.jpg",
+      "genre_ids": [
+        28,
+        53,
+        10752
+      ],
+      "id": 969492,
+      "original_language": "en",
+      "original_title": "Land of Bad",
+      "overview": "When a Delta Force special ops mission goes terribly wrong, Air Force drone pilot Reaper has 48 hours to remedy what has devolved into a wild rescue operation. With no weapons and no communication other than the drone above, the ground mission suddenly becomes a full-scale battle when the team is discovered by the enemy.",
+      "popularity": 172.221,
+      "poster_path": "/h3jYanWMEJq6JJsCopy1h7cT2Hs.jpg",
+      "release_date": "2024-02-16",
+      "title": "Land of Bad",
+      "video": false,
+      "vote_average": 6.875,
+      "vote_count": 28
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/8te0oIAuUOxi03RbM1SfL3xUYHB.jpg",
+      "genre_ids": [
+        35,
+        28,
+        80
+      ],
+      "id": 848538,
+      "original_language": "en",
+      "original_title": "Argylle",
+      "overview": "When the plots of reclusive author Elly Conway's fictional espionage novels begin to mirror the covert actions of a real-life spy organization, quiet evenings at home become a thing of the past. Accompanied by her cat Alfie and Aiden, a cat-allergic spy, Elly races across the world to stay one step ahead of the killers as the line between Conway's fictional world and her real one begins to blur.",
+      "popularity": 145.217,
+      "poster_path": "/siduVKgOnABO4WH4lOwPQwaGwJp.jpg",
+      "release_date": "2024-02-02",
+      "title": "Argylle",
+      "video": false,
+      "vote_average": 6.141,
+      "vote_count": 270
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/8SwK37xrQnLnLeLqdy3ByH09wI1.jpg",
+      "genre_ids": [
+        18,
+        53
+      ],
+      "id": 1026436,
+      "original_language": "en",
+      "original_title": "Miller's Girl",
+      "overview": "A precocious young writer becomes involved with her high school creative writing teacher in a dark coming-of-age drama that examines the blurred lines of emotional connectivity between professor and protégé.",
+      "popularity": 132.919,
+      "poster_path": "/aygFQeDmmtlArzo8epmsOg9mz9f.jpg",
+      "release_date": "2024-01-26",
+      "title": "Miller's Girl",
+      "video": false,
+      "vote_average": 6.9,
+      "vote_count": 29
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/cw8YicokMa3okekWq2rJT8Hccaz.jpg",
+      "genre_ids": [
+        878,
+        53
+      ],
+      "id": 790462,
+      "original_language": "en",
+      "original_title": "I.S.S.",
+      "overview": "Tensions flare in the near future aboard the International Space Station as a conflict breaks out on Earth. U.S. and Russian astronauts receive orders from the ground: take control of the station by any means necessary.",
+      "popularity": 120.69,
+      "poster_path": "/blPAS2HZcOGLTREbUeNIWmz0B6f.jpg",
+      "release_date": "2024-01-19",
+      "title": "I.S.S.",
+      "video": false,
+      "vote_average": 5.155,
+      "vote_count": 58
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/dmiN2rakG9hZW04Xx7mHOoHTOyD.jpg",
+      "genre_ids": [
+        35
+      ],
+      "id": 673593,
+      "original_language": "en",
+      "original_title": "Mean Girls",
+      "overview": "New student Cady Heron is welcomed into the top of the social food chain by the elite group of popular girls called ‘The Plastics,’ ruled by the conniving queen bee Regina George and her minions Gretchen and Karen. However, when Cady makes the major misstep of falling for Regina’s ex-boyfriend Aaron Samuels, she finds herself prey in Regina’s crosshairs. As Cady sets to take down the group’s apex predator with the help of her outcast friends Janis and Damian, she must learn how to stay true to herself while navigating the most cutthroat jungle of all: high school.",
+      "popularity": 106.599,
+      "poster_path": "/fbbj3viSUDEGT1fFFMNpHP1iUjw.jpg",
+      "release_date": "2024-01-12",
+      "title": "Mean Girls",
+      "video": false,
+      "vote_average": 6.635,
+      "vote_count": 130
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/4woSOUD0equAYzvwhWBHIJDCM88.jpg",
+      "genre_ids": [
+        28,
+        27,
+        53
+      ],
+      "id": 1096197,
+      "original_language": "en",
+      "original_title": "No Way Up",
+      "overview": "Characters from different backgrounds are thrown together when the plane they're travelling on crashes into the Pacific Ocean. A nightmare fight for survival ensues with the air supply running out and dangers creeping in from all sides.",
+      "popularity": 98.647,
+      "poster_path": "/rieMzC6JJoMVbsaUv6Rzj0fR7Px.jpg",
+      "release_date": "2024-02-16",
+      "title": "No Way Up",
+      "video": false,
+      "vote_average": 5.2,
+      "vote_count": 18
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/rQaHA74pevnGsxcKGaoZVGWe9TC.jpg",
+      "genre_ids": [
+        16,
+        10751,
+        35,
+        14
+      ],
+      "id": 508442,
+      "original_language": "en",
+      "original_title": "Soul",
+      "overview": "Joe Gardner is a middle school teacher with a love for jazz music. After a successful audition at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth.",
+      "popularity": 93.187,
+      "poster_path": "/hm58Jw4Lw8OIeECIq5qyPYhAeRJ.jpg",
+      "release_date": "2024-01-12",
+      "title": "Soul",
+      "video": false,
+      "vote_average": 8.139,
+      "vote_count": 9860
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/3mpgltEMgPf8zFtPnAWdDVN8ZT1.jpg",
+      "genre_ids": [
+        35,
+        18
+      ],
+      "id": 1056360,
+      "original_language": "en",
+      "original_title": "American Fiction",
+      "overview": "A novelist fed up with the establishment profiting from \"Black\" entertainment uses a pen name to write a book that propels him into the heart of hypocrisy and the madness he claims to disdain.",
+      "popularity": 92.654,
+      "poster_path": "/57MFWGHarg9jid7yfDTka4RmcMU.jpg",
+      "release_date": "2023-12-15",
+      "title": "American Fiction",
+      "video": false,
+      "vote_average": 7.317,
+      "vote_count": 180
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/cJOYsYSz3b3u0JpIWLBEfRam1eR.jpg",
+      "genre_ids": [
+        18,
+        35
+      ],
+      "id": 1014209,
+      "original_language": "en",
+      "original_title": "Suncoast",
+      "overview": "While caring for her brother along with her audacious mother, a teenager strikes up an unlikely friendship with an eccentric activist who is protesting one of the most landmark medical cases of all time.",
+      "popularity": 92.088,
+      "poster_path": "/nmPLUp5lVMiGomkN3db1WPeNrz3.jpg",
+      "release_date": "2024-02-02",
+      "title": "Suncoast",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 38
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/22iDWgWhw3JxtAF7GGO5uVD00Ci.jpg",
+      "genre_ids": [
+        27,
+        53
+      ],
+      "id": 1118033,
+      "original_language": "en",
+      "original_title": "The Seeding",
+      "overview": "When a hiker gets lost in the desert, a gang of feral children propelled by haunting legacies traps him in a sadistic battle for survival with a frightening endgame.",
+      "popularity": 82.92,
+      "poster_path": "/sMHvmhKlyyyCWLc3sCxY9wQ0Gai.jpg",
+      "release_date": "2024-01-26",
+      "title": "The Seeding",
+      "video": false,
+      "vote_average": 5.5,
+      "vote_count": 2
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/xtj3EhrFHMrZCLTWH6LarEXAG8r.jpg",
+      "genre_ids": [
+        16,
+        10751,
+        18
+      ],
+      "id": 574074,
+      "original_language": "en",
+      "original_title": "Kitbull",
+      "overview": "An unlikely connection sparks between two creatures: a fiercely independent stray kitten and a pit bull. Together, they experience friendship for the first time.",
+      "popularity": 73.963,
+      "poster_path": "/mwKO3cZbxipgd9QAPboJVTDLPiN.jpg",
+      "release_date": "2019-01-18",
+      "title": "Kitbull",
+      "video": false,
+      "vote_average": 7.97,
+      "vote_count": 345
+    }
+  ]
+}
